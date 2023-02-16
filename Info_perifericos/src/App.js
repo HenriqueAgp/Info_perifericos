@@ -6,6 +6,8 @@ import Rodape from './componentes/Rodape/Index.js';
 import Tipos from './componentes/Tipos/Index.js';
 import { getProdutos } from './mock/produtos_iniciais.js';
 import { v4 as uuidv4 } from 'uuid';
+import NavBar from './componentes/NavBar/Index.js';
+import Rotas from './Rotas/Index.js';
 
 function App() {
   const [produtos, setProdutos] = useState([])
@@ -75,7 +77,8 @@ function App() {
 
   return (
     <div className="App">
-      <Banner />
+      <Rotas />
+     
       <div className='formularios'>
         <Formulario 
           recebeProduto = { produto => salvarProdutos(produto)}
@@ -99,7 +102,7 @@ function App() {
     
       <Rodape />
     </div>
-    
+      
   );
 }
 

@@ -10,7 +10,7 @@ const CampoDescricao = (props) => {
  return (
     <div className='campo-texto'>
         <label>{props.label}</label>
-        <textarea rows='8' cols='53' value={props.valor} onChange={aoDigitar} required={props.obrigatorio} placeholder={pHm}></textarea>
+        <textarea value={props.valor} onChange={aoDigitar} required={props.obrigatorio} placeholder={pHm}></textarea>
     </div>
 )}
 
