@@ -1,0 +1,53 @@
+.produto {
+    width: 280px;
+    position: relative;
+}
+
+.produto .cabecalho {
+    background-color:  #F0F0F0;
+    border-radius: 10px 10px 0px 0px;
+}
+.produto img {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 15%;
+    position: relative;
+    bottom: -50px;
+   
+}
+
+.produto .rodape {
+    background: #FFFFFF;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 35px;
+    padding-bottom: 20px;
+}
+
+.produto .rodape h4 {
+    color: #6278F7;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.produto .rodape h5 {
+    font-size: 18px;
+    line-height: 22px;
+    color: #212121;
+    padding: 0 16px;
+    margin: 8px 16px;
+}
+
+.produto .rodape p{
+    font-size: small;
+    margin: 16px 8px;
+}
+
+.produto .deletar{
+    position: absolute;
+    top: 5px;
+    right: 8px;
+}

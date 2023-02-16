@@ -1,0 +1,28 @@
+.tipos {
+    position: relative;
+    text-align: center;
+    padding: 8px 32px 32px 32px;
+}
+
+.tipos h3{
+    font-size: 32px;
+    border-bottom: 4px solid ;
+    display: inline-block;
+    padding-bottom: 8px;
+    margin-top: 0;
+}
+
+.tipos .card{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 32px;
+    flex-wrap: wrap;
+
+}
+.input-color{
+    position: absolute;
+    top: 20px;
+    right: 50px;
+
+}
+

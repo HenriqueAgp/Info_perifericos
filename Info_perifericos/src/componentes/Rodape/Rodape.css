@@ -1,0 +1,20 @@
+.roda{
+    background-color: #d52121;
+    background-image: url('/public/img/fundo.png');
+    display: flex;
+    justify-content:space-around;
+    padding: 128px;
+
+}
+
+.logos img{
+    padding-top: 16px;
+    margin: 0px 10px;
+}
+
+.roda p{
+   
+    font-size: 28px;
+    color: white;
+
+}

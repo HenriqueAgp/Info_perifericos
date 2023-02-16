@@ -1,0 +1,9 @@
+.banner {
+    display: flex;
+    background-color: #d52121;
+    text-align: center;
+
+}
+.banner img {
+    max-width: 100%;
+}
