@@ -5,10 +5,11 @@ import CampoTexto from '../CampoTexto/Index';
 import ListaSuspensa from '../ListaSuspensa/Index';
 import './Formulario.css';
 import { v4 as uuidv4 } from "uuid"
+import ListaProdutos from '../ListaProdutos/Index';
 
 
 const Formulario = (props) => {
-   
+
     const [nome, setNome] = useState('');
     const [fabricante, setFabricante] = useState('');
     const [imagem, setImagem] = useState('');
@@ -39,19 +40,22 @@ const Formulario = (props) => {
         setTipo('');
     }
 
-    const  enviaLista = (evt) => {
+    const enviaLista = (evt) => {
         evt.preventDefault();
         let lista = {
             id: uuidv4(),
             nomeLista,
-            valorEstimado
+            valorEstimado,
+            valorTotal: 0,
+            produtos: [],
+
         }
         props.recebeLista(lista)
         setNomeLista('');
         setValorEstimado('');
 
 
-        
+
     }
     return (
         <section className='formulario'>
@@ -72,7 +76,7 @@ const Formulario = (props) => {
                     valor={fabricante}
                     aoAlterado={valor => setFabricante(valor)}
                 />
-                
+
                 <CampoTexto
                     label="Imagem"
                     placeholder="Digite o endereço da Imagem"
@@ -94,13 +98,13 @@ const Formulario = (props) => {
                     aoAlterado={valor => setDescricao(valor)}
                 />
 
-                <ListaSuspensa 
+                <ListaSuspensa
                     obrigatorio={true}
                     valor={tipo}
-                    aoAlterado = {tipo => setTipo(tipo)}
-                    tipos = {props.tipos}
+                    aoAlterado={tipo => setTipo(tipo)}
+                    tipos={props.tipos}
                 />
-                             
+
                 <Botao>
                     criar card
                 </Botao>
@@ -121,20 +125,18 @@ const Formulario = (props) => {
                     placeholder="Entre com o preço estimado dos Produtos."
                     valor={valorEstimado}
                     aoAlterado={valor => setValorEstimado(valor)}
-                /> 
+                />
 
                 <Botao>
                     Criar nova Lista
                 </Botao>
+
                 <ul className='listaprodutos'>
                     <h2>Listas de produtos:</h2>
                     <li><span>Valor </span> Nome da Lista</li>
-                    {props.listaProdutos.map(prod => <li><span>{prod.valorEstimado}  </span> {prod.nomeLista}</li>)}
+                    {props.listaProduto.map(prod => <ListaProdutos key={prod.id} produto={prod}/>)}
                 </ul>
-
             </form>
-          
-
         </section>
     )
 }

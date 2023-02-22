@@ -1,8 +1,20 @@
+import Tipos from "../../componentes/Tipos/Index";
 
-const Home = () => {
-    return(
+
+
+const Home = ({ tipos, aoDeletar, mudarCor, produtos }) => {
+    return (
         <div>
-            Home
+            <h1> Lista Completa de Produtos </h1>
+            {tipos.map(tipos => <Tipos
+                key={tipos.id}
+                id={tipos.id}
+                nome={tipos.nome}
+                cor={tipos.cor}
+                aoDeletar={aoDeletar}
+                mudarCor={mudarCor}
+                produtos={produtos.filter(produto => produto.tipo === tipos.nome)}
+            />)}
         </div>
     )
 }

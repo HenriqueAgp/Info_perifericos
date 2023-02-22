@@ -3,9 +3,8 @@ import './Tipos.css'
 import hexToRgba from 'hex-to-rgba';
 
 const Tipos = ({nome, id, cor, aoDeletar, mudarCor, produtos}) => {
-   
+    
     return(
-
         produtos.length > 0 ?<section className='tipos' style={{backgroundColor: hexToRgba(cor, 0.20) }}>
             <input value={cor} onChange= { (evt)=>{ mudarCor(evt.target.value, id) }} type='color'  className='input-color'></input>
             <h3 style={{borderColor: cor }}>{nome}</h3>
