@@ -134,7 +134,7 @@ const Formulario = (props) => {
                 <ul className='listaprodutos'>
                     <h2>Listas de produtos:</h2>
                     <li><span>Valor </span> Nome da Lista</li>
-                    {props.listaProduto.map(prod => <ListaProdutos key={prod.id} produto={prod}/>)}
+                    {props.listaProduto.map(prod => <ListaProdutos key={prod.id} lista={prod}/>)}
                 </ul>
             </form>
         </section>

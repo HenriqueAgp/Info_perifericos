@@ -5,6 +5,17 @@ import Banner from '../Banner/Index';
 
 
 const NavBar = () => {
+    function listaNaSecao () {
+
+        let lista = JSON.parse(window.sessionStorage.getItem('lista'))
+        if(lista !== null )
+        {
+           return <li><Link to='/ListaAtual'>  {lista.nomeLista}  </Link></li>
+        }else 
+        {return '';}
+
+    }
+
     return (
         <>
             <Banner />
@@ -16,6 +27,7 @@ const NavBar = () => {
                     <li>
                         <Link to='/BuscaProdutos'> Cadastro de produtos e listaProdutos  </Link>
                     </li>
+                    {listaNaSecao()}
                 </ul>
             </nav>
         </>
