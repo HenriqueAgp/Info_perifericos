@@ -14,7 +14,7 @@ const Rotas = ({tipos, aoDeletar, mudarCor, produtos, recebeProduto, recebeLista
                     <Routes>
                         <Route path='/' element={<Home tipos={tipos} aoDeletar={aoDeletar} mudarCor={mudarCor} produtos={produtos} />} />
                         <Route path='/BuscaProdutos' element={<BuscarProdutos recebeProduto={recebeProduto} recebeLista={recebeLista} listaProduto={listaProduto} tipos={tipos}/>} />
-                        <Route path='/ListaAtual' element={<ListaAtual />} />                       
+                        <Route path='/ListaAtual' element={<ListaAtual aoDeletar={aoDeletar} recebeLista={recebeLista} />} />                       
                     </Routes>
                 </>               
             </BrowserRouter>

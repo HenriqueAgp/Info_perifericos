@@ -3,6 +3,18 @@ import {AiFillCloseCircle} from 'react-icons/ai';
 
 const Produto = (props) => {
     const imagem = (img => `./img/perifericos/${img}`)
+
+    const atualizarLista = (novaLista) => {
+        
+        let listas = JSON.parse(window.sessionStorage.getItem('listas'))
+        const listasAtualizadas = listas.map( lista => {
+            if(lista.id === novaLista.id)
+                lista.produtos = novaLista.produtos
+            return lista      
+        })
+        window.sessionStorage.setItem('listas', JSON.stringify(listasAtualizadas))
+    }
+    
     function salvarProdutoNaLista (props){
         
         let lista = JSON.parse(window.sessionStorage.getItem('lista'))
@@ -18,9 +30,12 @@ const Produto = (props) => {
         if(lista !== null){
             lista.produtos.push(produto)
             window.sessionStorage.setItem('lista', JSON.stringify(lista))
-        }else { console.log('Estou aqui')}
-    
+        }else{ console.log('Estou aqui')}
+
+        atualizarLista(lista)
     }
+
+  
     return(
         <div className='produto' >
             <AiFillCloseCircle size={26} className='deletar' data-id={props.id} onClick={ (evt) => {props.aoDeletar(props.id)}} />

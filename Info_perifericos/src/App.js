@@ -1,11 +1,9 @@
 
 import { useEffect, useState } from 'react';
 import Rodape from './componentes/Rodape/Index.js';
-import Tipos from './componentes/Tipos/Index.js';
 import { getProdutos } from './mock/produtos_iniciais.js';
 import { v4 as uuidv4 } from 'uuid';
 import Rotas from './Rotas/Index.js';
-import Formulario from './componentes/Formulario/Index.js'
 
 
 
@@ -50,6 +48,7 @@ function App() {
     }
   ])
 
+  
 
   useEffect(() => {
     getProdutos().then((data) => setProdutos(data))
@@ -59,8 +58,15 @@ function App() {
     setProdutos([...produtos, produto]) // Foi criado um novo array e inserido o array antigo e depois o novo elemento do array que no caso seria o objeto colaborador.
   }
 
-  const salavarLista = (novaLista) => {
-    setLista([...lista, novaLista])
+  function salvarListaSession (lista) {
+    window.sessionStorage.setItem('listas', JSON.stringify(lista))
+  }
+
+  // salva lista na session
+  const salvarLista = (novaLista) => {
+    const listaFinal = [...lista, novaLista]
+    setLista(listaFinal)
+    salvarListaSession(listaFinal)
   }
 
   function deletarProduto(id) {
@@ -84,12 +90,9 @@ function App() {
         mudarCor={mudarCorTipo}
         produtos={produtos}
         recebeProduto={produto => salvarProdutos(produto)}
-        recebeLista={lista => salavarLista(lista)}
+        recebeLista={lista => salvarLista(lista)}
         listaProduto={lista}
       />
-
-    
-
       <Rodape />
     </div>
 

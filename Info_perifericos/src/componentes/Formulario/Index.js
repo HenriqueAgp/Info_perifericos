@@ -48,15 +48,20 @@ const Formulario = (props) => {
             valorEstimado,
             valorTotal: 0,
             produtos: [],
-
         }
         props.recebeLista(lista)
         setNomeLista('');
         setValorEstimado('');
-
-
-
     }
+
+    const getLista = () =>{
+        const x = window.sessionStorage.getItem('listas')
+        if(x!== null)
+            return  JSON.parse(x)
+            
+        return []   
+    }
+    
     return (
         <section className='formulario'>
             <form onSubmit={enviaFormu}>
@@ -134,7 +139,8 @@ const Formulario = (props) => {
                 <ul className='listaprodutos'>
                     <h2>Listas de produtos:</h2>
                     <li><span>Valor </span> Nome da Lista</li>
-                    {props.listaProduto.map(prod => <ListaProdutos key={prod.id} lista={prod}/>)}
+                    {getLista().map(prod => <ListaProdutos key={prod.id} lista={prod}/>)}
+
                 </ul>
             </form>
         </section>
