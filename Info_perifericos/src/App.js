@@ -48,8 +48,6 @@ function App() {
     }
   ])
 
-  
-
   useEffect(() => {
     getProdutos().then((data) => setProdutos(data))
   }, [])
@@ -58,19 +56,42 @@ function App() {
     setProdutos([...produtos, produto]) // Foi criado um novo array e inserido o array antigo e depois o novo elemento do array que no caso seria o objeto colaborador.
   }
 
-  function salvarListaSession (lista) {
-    window.sessionStorage.setItem('listas', JSON.stringify(lista))
-  }
-
   // salva lista na session
   const salvarLista = (novaLista) => {
     const listaFinal = [...lista, novaLista]
     setLista(listaFinal)
-    salvarListaSession(listaFinal)
+    window.sessionStorage.setItem('listas', JSON.stringify(listaFinal))  
   }
 
   function deletarProduto(id) {
     setProdutos(prod => prod.filter(produto => produto.id !== id))
+  }
+
+  function salvarProdutoNaLista (props){
+    let lista = JSON.parse(window.sessionStorage.getItem('lista'))
+    let produto = { 
+        id : props.id,
+        nome: props.nome,
+        fabricante: props.fabricante,
+        preco: props.preco,
+        imagem: props.imagem,
+        descricao: props.descricao
+    }
+    if(lista !== null){
+        lista.produtos.push(produto)
+        window.sessionStorage.setItem('lista', JSON.stringify(lista))
+    }else{ console.log('Estou aqui')}
+    atualizarLista(lista)
+  }
+
+  const atualizarLista = (novaLista) => {
+    let listas = JSON.parse(window.sessionStorage.getItem('listas'))
+    const listasAtualizadas = listas.map( lista => {
+        if(lista.id === novaLista.id)
+            lista.produtos = novaLista.produtos
+        return lista      
+    })
+    window.sessionStorage.setItem('listas', JSON.stringify(listasAtualizadas))
   }
 
   function mudarCorTipo(cor, id) {
@@ -92,6 +113,7 @@ function App() {
         recebeProduto={produto => salvarProdutos(produto)}
         recebeLista={lista => salvarLista(lista)}
         listaProduto={lista}
+        salvarProdutoNaLista = {produto => salvarProdutoNaLista(produto)}
       />
       <Rodape />
     </div>

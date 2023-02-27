@@ -19,7 +19,7 @@ const Formulario = (props) => {
 
     const [nomeLista, setNomeLista] = useState('')
     const [valorEstimado, setValorEstimado] = useState('')
-
+    
     const enviaFormu = (evt) => {
         evt.preventDefault();
         let produto = {
@@ -54,12 +54,26 @@ const Formulario = (props) => {
         setValorEstimado('');
     }
 
+    //metodo para recuperar a lista no sessionStorage
     const getLista = () =>{
         const x = window.sessionStorage.getItem('listas')
         if(x!== null)
-            return  JSON.parse(x)
-            
+            return  JSON.parse(x)       
         return []   
+    }
+
+    // Novos metodos implantados-----------------------------------------------------------------
+    function salvarStatus (lista) { 
+        window.sessionStorage.setItem('lista',JSON.stringify(lista))  
+    }
+
+    function deletarLista (lista) {
+        window.sessionStorage.removeItem('lista')
+        let list = JSON.parse(window.sessionStorage.getItem('listas'))
+        let x = list.findIndex( ele => ele.id === lista.id)
+        let newList = list.splice(x)
+        console.log(newList)
+        window.sessionStorage.setItem('listas', JSON.stringify(newList))
     }
     
     return (
@@ -139,7 +153,7 @@ const Formulario = (props) => {
                 <ul className='listaprodutos'>
                     <h2>Listas de produtos:</h2>
                     <li><span>Valor </span> Nome da Lista</li>
-                    {getLista().map(prod => <ListaProdutos key={prod.id} lista={prod}/>)}
+                    {getLista().map(prod => <ListaProdutos key={prod.id} lista={prod} salvarStatus={elem => salvarStatus(elem)} deletarLista={elem => deletarLista(elem)} />)} 
 
                 </ul>
             </form>

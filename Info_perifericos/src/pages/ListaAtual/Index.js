@@ -24,6 +24,7 @@ const ListaAtual = ({aoDeletar, cor='#82CFFA', recebeLista }) => {
                     descricao = {produto.descricao}
                     aoDeletar = {aoDeletar}
                     recebeLista = {recebeLista}
+                    obrigatorio 
                 />
             )}
             </div>

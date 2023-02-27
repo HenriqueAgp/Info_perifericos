@@ -2,7 +2,7 @@ import Tipos from "../../componentes/Tipos/Index";
 
 
 
-const Home = ({ tipos, aoDeletar, mudarCor, produtos }) => {
+const Home = ({ tipos, aoDeletar, mudarCor, produtos, salvarProdutoNaLista }) => {
     return (
         <div>
             <h1> Lista Completa de Produtos </h1>
@@ -13,6 +13,7 @@ const Home = ({ tipos, aoDeletar, mudarCor, produtos }) => {
                 cor={tipos.cor}
                 aoDeletar={aoDeletar}
                 mudarCor={mudarCor}
+                salvarProdutoNaLista ={salvarProdutoNaLista}
                 produtos={produtos.filter(produto => produto.tipo === tipos.nome)}
             />)}
         </div>
