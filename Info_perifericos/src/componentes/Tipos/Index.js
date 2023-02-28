@@ -20,7 +20,8 @@ const Tipos = ({nome, id, cor, aoDeletar, mudarCor, produtos, salvarProdutoNaLis
                         imagem = {valor.imagem}
                         descricao = {valor.descricao}
                         aoDeletar = {aoDeletar}
-                        salvarProdutoNaLista= {salvarProdutoNaLista}          
+                        salvarProdutoNaLista= {salvarProdutoNaLista}
+                             
                     />
 
                 )}

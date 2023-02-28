@@ -1,18 +1,15 @@
 import hexToRgba from "hex-to-rgba";
 import Produto from "../../componentes/Produto/Index";
 
-const ListaAtual = ({aoDeletar, cor='#82CFFA', recebeLista }) => {
-    const lista =  JSON.parse(window.sessionStorage.getItem('lista'))
-
-
+const ListaAtual = ({aoDeletar, cor='#82CFFA', recebeLista, listaLogada }) => {
     return (
        <div>
-            <h1> Lista {lista.nomeLista}</h1>
+            <h1> Lista {listaLogada.nomeLista}</h1>
             <section className='tipos' style={{backgroundColor: hexToRgba(cor, 0.20) }}>
             
-            <h3 style={{borderColor: cor }}>{lista.nomelista}</h3>
+            <h3 style={{borderColor: cor }}>{listaLogada.nomeLista}</h3>
             <div className='card'>
-            {lista.produtos.map( (produto, indice) =>
+            {listaLogada.produtos.map( (produto, indice) =>
                 <Produto
                     corDeFundo={cor}
                     key={produto.id + `${indice}`}

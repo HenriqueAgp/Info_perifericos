@@ -9,7 +9,8 @@ import Rotas from './Rotas/Index.js';
 
 function App() {
   const [produtos, setProdutos] = useState([])
-  const [lista, setLista] = useState([])
+  const[listaLogada, setListaLogada] = useState({})
+  const [listas, setListas] = useState([])
   const [tipos, setTipos] = useState([
     {
       id: uuidv4(),
@@ -56,19 +57,27 @@ function App() {
     setProdutos([...produtos, produto]) // Foi criado um novo array e inserido o array antigo e depois o novo elemento do array que no caso seria o objeto colaborador.
   }
 
-  // salva lista na session
   const salvarLista = (novaLista) => {
-    const listaFinal = [...lista, novaLista]
-    setLista(listaFinal)
-    window.sessionStorage.setItem('listas', JSON.stringify(listaFinal))  
+    const listaFinal = [...listas, novaLista]
+    setListas(listaFinal)
   }
 
-  function deletarProduto(id) {
+  function deletarProduto(id, validador) {
+    if (!validador){
     setProdutos(prod => prod.filter(produto => produto.id !== id))
+    }else{
+      let listaTemporaria = listaLogada
+      let x = listaLogada.produtos.findIndex(valor => valor.id === id)
+      console.log(x)
+      listaTemporaria.produtos.splice(x,1)
+      setListaLogada(listaTemporaria)
+      atualizarLista(listaTemporaria)
+    }
+   
+
   }
 
   function salvarProdutoNaLista (props){
-    let lista = JSON.parse(window.sessionStorage.getItem('lista'))
     let produto = { 
         id : props.id,
         nome: props.nome,
@@ -77,21 +86,22 @@ function App() {
         imagem: props.imagem,
         descricao: props.descricao
     }
-    if(lista !== null){
-        lista.produtos.push(produto)
-        window.sessionStorage.setItem('lista', JSON.stringify(lista))
-    }else{ console.log('Estou aqui')}
-    atualizarLista(lista)
+    let listaTemporaria = listaLogada;
+    if(listaLogada !== null){
+        listaTemporaria.produtos.push(produto)
+    }else{ alert('Por favor crie e selecione uma Lista.')}
+    atualizarLista(listaTemporaria)
+    setListaLogada(listaTemporaria)
+    alert('Produto salvo na lista com sucesso!!!')
   }
 
   const atualizarLista = (novaLista) => {
-    let listas = JSON.parse(window.sessionStorage.getItem('listas'))
     const listasAtualizadas = listas.map( lista => {
         if(lista.id === novaLista.id)
             lista.produtos = novaLista.produtos
         return lista      
     })
-    window.sessionStorage.setItem('listas', JSON.stringify(listasAtualizadas))
+    setListas(listasAtualizadas)
   }
 
   function mudarCorTipo(cor, id) {
@@ -103,17 +113,32 @@ function App() {
     }))
   }
 
+  function salvarStatusLista (element) {
+    setListaLogada(element)
+  }
+
+  function deletarLista (element) {
+    let listasTemporarias = listas;
+    let y = listasTemporarias.findIndex(valor => valor.id === element.id)
+    listasTemporarias.splice(y,1)
+    setListas([...listasTemporarias])
+
+  }
+
   return (
     <div className="App">
       <Rotas
+        listaLogada ={listaLogada}
         tipos={tipos}
         aoDeletar={deletarProduto}
         mudarCor={mudarCorTipo}
         produtos={produtos}
         recebeProduto={produto => salvarProdutos(produto)}
         recebeLista={lista => salvarLista(lista)}
-        listaProduto={lista}
+        listaProduto={listas}
         salvarProdutoNaLista = {produto => salvarProdutoNaLista(produto)}
+        salvarStatus = {elem => salvarStatusLista(elem) }
+        deletarLista = {elem => deletarLista(elem)}
       />
       <Rodape />
     </div>

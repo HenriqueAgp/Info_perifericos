@@ -4,16 +4,13 @@ import Banner from '../Banner/Index';
 
 
 
-const NavBar = () => {
+const NavBar = ({listaLogada}) => {
     function listaNaSecao () {
-
-        let lista = JSON.parse(window.sessionStorage.getItem('lista'))
-        if(lista !== null )
+        if(listaLogada !== null )
         {
-           return <li><Link to='/ListaAtual'>  {lista.nomeLista}  </Link></li>
+           return <li><Link to='/ListaAtual'>  {listaLogada.nomeLista}  </Link></li>
         }else 
         {return '';}
-
     }
 
     return (
