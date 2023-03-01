@@ -6,10 +6,22 @@
 }
 
 .navbar ul li{
-    border: 2px solid black;
-    padding: 5px;
-    border-radius: 5%;
-    background-color: rgb(231, 231, 231);
-   
+    background-color: #d52121;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 25px;
+    padding: 22px;
+    border: none;
+    cursor: pointer;
+    color: #fff!important;
+    margin: 32px 0;
+}
+.navbar .link{
+    color:#fff;
+    text-decoration: solid;
+}
 
+.navbar .link span{
+    color: rgb(0, 0, 88);
+    font-size: 28px;
 }

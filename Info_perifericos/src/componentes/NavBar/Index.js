@@ -6,11 +6,12 @@ import Banner from '../Banner/Index';
 
 const NavBar = ({listaLogada}) => {
     function listaNaSecao () {
-        if(listaLogada !== null )
+        if(listaLogada.id === undefined )
         {
-           return <li><Link to='/ListaAtual'>  {listaLogada.nomeLista}  </Link></li>
+            return '';
         }else 
-        {return '';}
+        {  return <li><Link className='link' to='/ListaAtual'> Consultar Lista: &nbsp; <span>{listaLogada.nomeLista}</span> </Link></li>
+    }
     }
 
     return (
@@ -19,12 +20,12 @@ const NavBar = ({listaLogada}) => {
             <nav className='navbar'>
                 <ul>
                     <li>
-                        <Link to='/'> Lista de Produtos </Link>
+                        <Link className='link' to='/'> Produtos Cadastrados </Link>
                     </li>
                     <li>
-                        <Link to='/BuscaProdutos'> Cadastro de produtos e listaProdutos  </Link>
+                        <Link className='link' to='/BuscaProdutos'> Cadastro de produtos e listaProdutos  </Link>
                     </li>
-                    {listaNaSecao()}
+                     {listaNaSecao()}
                 </ul>
             </nav>
         </>
