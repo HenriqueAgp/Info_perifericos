@@ -60,6 +60,7 @@ function App() {
   const salvarLista = (novaLista) => {
     const listaFinal = [...listas, novaLista]
     setListas(listaFinal)
+   
   }
 
   function deletarProduto(id, validador) {
@@ -68,7 +69,6 @@ function App() {
     }else{
       let listaTemporaria = listaLogada
       let x = listaLogada.produtos.findIndex(valor => valor.id === id)
-      console.log(x)
       listaTemporaria.produtos.splice(x,1)
       setListaLogada(listaTemporaria)
       atualizarLista(listaTemporaria)
@@ -114,6 +114,7 @@ function App() {
   }
 
   function salvarStatusLista (element) {
+    
     setListaLogada(element)
   }
 

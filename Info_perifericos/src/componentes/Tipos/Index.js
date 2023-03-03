@@ -2,7 +2,7 @@ import Produto from '../Produto/Index';
 import './Tipos.css'
 import hexToRgba from 'hex-to-rgba';
 
-const Tipos = ({nome, id, cor, aoDeletar, mudarCor, produtos, salvarProdutoNaLista}) => {
+const Tipos = ({nome, id, cor, aoDeletar, mudarCor, produtos, salvarProdutoNaLista }) => {
     
     return(
         produtos.length > 0 ?<section className='tipos' style={{backgroundColor: hexToRgba(cor, 0.20) }}>
@@ -20,10 +20,8 @@ const Tipos = ({nome, id, cor, aoDeletar, mudarCor, produtos, salvarProdutoNaLis
                         imagem = {valor.imagem}
                         descricao = {valor.descricao}
                         aoDeletar = {aoDeletar}
-                        salvarProdutoNaLista= {salvarProdutoNaLista}
-                             
+                        salvarProdutoNaLista= {salvarProdutoNaLista}       
                     />
-
                 )}
             </div>
         </section> : ""

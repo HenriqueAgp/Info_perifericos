@@ -6,6 +6,7 @@ import ListaSuspensa from '../ListaSuspensa/Index';
 import './Formulario.css';
 import { v4 as uuidv4 } from "uuid"
 import ListaProdutos from '../ListaProdutos/Index';
+import CampoNumero from '../CampoNumero/Index';
 
 
 const Formulario = (props) => {
@@ -16,10 +17,14 @@ const Formulario = (props) => {
     const [tipo, setTipo] = useState('');
     const [preco, setPreco] = useState('');
     const [descricao, setDescricao] = useState('');
-
     const [nomeLista, setNomeLista] = useState('')
     const [valorEstimado, setValorEstimado] = useState('')
     
+    function validaPreco (preco) {
+        let valorFormatado = preco.replace(/([0-9]*)([0-9]{2})/, "$1.$2" )
+        return "R$ " + valorFormatado
+    }
+
     const enviaFormu = (evt) => {
         evt.preventDefault();
         let produto = {
@@ -38,6 +43,7 @@ const Formulario = (props) => {
         setDescricao('');
         setPreco('');
         setTipo('');
+        alert('Produto cadastrado com sucesso!!!')
     }
 
     const enviaLista = (evt) => {
@@ -52,6 +58,7 @@ const Formulario = (props) => {
         props.recebeLista(lista)
         setNomeLista('');
         setValorEstimado('');
+        
     }
 
     return (
@@ -81,13 +88,14 @@ const Formulario = (props) => {
                     aoAlterado={valor => setImagem(valor)}
                 />
 
-                <CampoTexto
+                <CampoNumero
                     label="Preço"
                     placeholder="Entre com o preço do Produto"
                     valor={preco}
+                    validaPreco = {validaPreco}
                     aoAlterado={valor => setPreco(valor)}
                 />
-
+      
                 <CampoDescricao
                     label="Descrição"
                     placeholder="Entre com o descrição do produto:"
@@ -117,10 +125,11 @@ const Formulario = (props) => {
                     aoAlterado={valor => setNomeLista(valor)}
                 />
 
-                <CampoTexto
+                <CampoNumero
                     label="Preço Estimado"
                     placeholder="Entre com o preço estimado dos Produtos."
                     valor={valorEstimado}
+                    validaPreco= {validaPreco}
                     aoAlterado={valor => setValorEstimado(valor)}
                 />
 

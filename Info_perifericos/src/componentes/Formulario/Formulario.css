@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     margin: 80px 0;
+    
 }
 
 .formulario form{
@@ -43,4 +44,5 @@
 .listaprodutos li span{
     font-weight: bold;
     margin-right: 24px;
+    
 }

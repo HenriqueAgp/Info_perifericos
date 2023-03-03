@@ -13,7 +13,7 @@ const Produto = (props) => {
             <div className='rodape'>
                 <h4>{props.nome}</h4>
                 <h5>{props.fabricante}</h5>
-                <h5>R$ {props.preco}</h5>
+                <h5>R$ {(parseFloat(props.preco)/100).toFixed(2)}</h5>
                 <p>{props.descricao}</p>  
                 <button onClick={() => props.salvarProdutoNaLista(props)} hidden={props.obrigatorio}> Salvar na Lista</button>
             </div>
