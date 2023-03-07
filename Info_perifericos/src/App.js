@@ -78,6 +78,7 @@ function App() {
   }
 
   function salvarProdutoNaLista (props){
+    debugger
     let produto = { 
         id : props.id,
         nome: props.nome,
@@ -87,7 +88,7 @@ function App() {
         descricao: props.descricao
     }
     let listaTemporaria = listaLogada;
-    if(listaLogada !== null){
+    if(listaLogada !== ""){
         listaTemporaria.produtos.push(produto)
     }else{ alert('Por favor crie e selecione uma Lista.')}
     atualizarLista(listaTemporaria)
@@ -123,7 +124,8 @@ function App() {
     let y = listasTemporarias.findIndex(valor => valor.id === element.id)
     listasTemporarias.splice(y,1)
     setListas([...listasTemporarias])
-
+    if(listaLogada.id === element.id)
+      setListaLogada('')
   }
 
   return (
