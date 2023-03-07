@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import './ListaProdutos.css'
 
 const ListaProdutos = ({lista, salvarStatus, deletarLista }) => {
     return (
@@ -7,7 +6,7 @@ const ListaProdutos = ({lista, salvarStatus, deletarLista }) => {
             <span>R$ {parseFloat(lista.valorEstimado)/100}</span>
             {lista.nomeLista}
             
-            <Link to='/ListaAtual' onClick={() => salvarStatus(lista) }> ALterar Lista</Link>
+            <Link to='/ListaAtual' onClick={() => salvarStatus(lista) }> <button> Selecionar Lista</button></Link>
             <button type='button' onClick={() => deletarLista(lista) }> Deletar Lista </button>
 
         </li>

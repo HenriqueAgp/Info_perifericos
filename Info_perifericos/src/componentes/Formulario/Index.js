@@ -66,7 +66,7 @@ const Formulario = (props) => {
             <form onSubmit={enviaFormu}>
                 <h2>Preencha os dados para criar um novo Produto:</h2>
                 <CampoTexto
-                    obrigatorio={true}
+                    obrigatorio
                     label="Nome"
                     placeholder="Digite o nome do produto"
                     valor={nome}
@@ -74,7 +74,7 @@ const Formulario = (props) => {
                 />
 
                 <CampoTexto
-                    obrigatorio={true}
+                    obrigatorio
                     label="Fabricante"
                     placeholder="Entre com o fabricante"
                     valor={fabricante}
@@ -94,6 +94,7 @@ const Formulario = (props) => {
                     valor={preco}
                     validaPreco = {validaPreco}
                     aoAlterado={valor => setPreco(valor)}
+                    
                 />
       
                 <CampoDescricao
@@ -104,7 +105,7 @@ const Formulario = (props) => {
                 />
 
                 <ListaSuspensa
-                    obrigatorio={true}
+                    obrigatorio
                     valor={tipo}
                     aoAlterado={tipo => setTipo(tipo)}
                     tipos={props.tipos}
@@ -118,7 +119,7 @@ const Formulario = (props) => {
             <form onSubmit={enviaLista}>
                 <h2>Preencha os dados para criar uma nova lista:</h2>
                 <CampoTexto
-                    obrigatorio={true}
+                    obrigatorio
                     label="Nome da Lista"
                     placeholder="Digite o nome da nova lista de produtos"
                     valor={nomeLista}
@@ -131,6 +132,7 @@ const Formulario = (props) => {
                     valor={valorEstimado}
                     validaPreco= {validaPreco}
                     aoAlterado={valor => setValorEstimado(valor)}
+                   
                 />
 
                 <Botao>
@@ -139,7 +141,7 @@ const Formulario = (props) => {
 
                 <ul className='listaprodutos'>
                     <h2>Listas de produtos:</h2>
-                    <li><span>Valor </span> Nome da Lista</li>
+                    <li><span>Valor da estimado</span> <b>Nome da Lista</b></li>
                     {props.listaProduto.map(prod => <ListaProdutos key={prod.id} lista={prod} salvarStatus={props.salvarStatus} deletarLista={props.deletarLista} />)} 
 
                 </ul>

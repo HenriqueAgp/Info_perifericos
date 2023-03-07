@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     margin: 80px 0;
-    
 }
 
 .formulario form{
@@ -12,7 +11,6 @@
  padding: 36px 64px;
  border-radius: 20px;
  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0,8);
-
 }
 
 .formulario form h2{
@@ -26,23 +24,32 @@
     background-color: white;
     border-radius: 5%;
     padding: 25px;
-    
-
 }
 
 .listaprodutos h2{
-    font-size: 24px;
     margin-top: 0;
 }
 
 .listaprodutos li{
+    display:  grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     box-shadow: 8px 8px 16px rgba(0, 0, 0, 0,8);
     background-color: aliceblue;
     margin: 10px;
+    padding: 4px;
+    font-weight: bolder;
+    justify-content: space-between;   
 }
 
-.listaprodutos li span{
-    font-weight: bold;
-    margin-right: 24px;
-    
+.listaprodutos li button{
+    color: white;
+    background-color: red;
+    border-style: none;
+    height: 30px;
+    border-radius: 10px;
+    width: 130px;
+}
+
+.listaprodutos li button:hover{
+    color: #95ffd4;
 }

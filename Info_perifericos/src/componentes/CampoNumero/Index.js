@@ -13,10 +13,11 @@ const CampoNumero = (props) => {
             props.aoAlterado( props.valor.substring(0,props.valor.length-1))
     }
 
+    
  return (
     <div className='campo-texto'>
         <label>{props.label}</label>
-        <input  type="text" value={props.validaPreco(props.valor)} onKeyDown={aoDigitar} readOnly required={props.obrigatorio} placeholder={pHm}></input>
+        <input  type="text" value={props.validaPreco(props.valor)} onKeyDown={aoDigitar} readOnly required placeholder={pHm}></input>
     </div>
 )}
 

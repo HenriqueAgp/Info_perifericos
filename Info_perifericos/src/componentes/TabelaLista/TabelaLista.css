@@ -1,0 +1,21 @@
+.tabelalista {
+    
+    width: 95%;
+    background-color: aliceblue;
+    border: 5px solid rgb(190, 218, 243);
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.tabelalista thead{
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.tabelalista tbody{
+    text-align: center;
+    font-size: 18px;
+    
+}
