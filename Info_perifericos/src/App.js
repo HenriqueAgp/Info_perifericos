@@ -9,7 +9,7 @@ import Rotas from './Rotas/Index.js';
 
 function App() {
   const [produtos, setProdutos] = useState([])
-  const[listaLogada, setListaLogada] = useState({})
+  const [listaLogada, setListaLogada] = useState('')
   const [listas, setListas] = useState([])
   const [tipos, setTipos] = useState([
     {
@@ -60,47 +60,49 @@ function App() {
   const salvarLista = (novaLista) => {
     const listaFinal = [...listas, novaLista]
     setListas(listaFinal)
-   
+
   }
 
   function deletarProduto(id, validador) {
-    if (!validador){
-    setProdutos(prod => prod.filter(produto => produto.id !== id))
-    }else{
+    if (!validador) {
+      setProdutos(prod => prod.filter(produto => produto.id !== id))
+    } else {
       let listaTemporaria = listaLogada
       let x = listaLogada.produtos.findIndex(valor => valor.id === id)
-      listaTemporaria.produtos.splice(x,1)
+      listaTemporaria.produtos.splice(x, 1)
       setListaLogada(listaTemporaria)
       atualizarLista(listaTemporaria)
     }
-   
+
 
   }
 
-  function salvarProdutoNaLista (props){
-    debugger
-    let produto = { 
-        id : props.id,
-        nome: props.nome,
-        fabricante: props.fabricante,
-        preco: props.preco,
-        imagem: props.imagem,
-        descricao: props.descricao
+  function salvarProdutoNaLista(props) {
+    
+    let produto = {
+      id: props.id,
+      nome: props.nome,
+      fabricante: props.fabricante,
+      preco: props.preco,
+      imagem: props.imagem,
+      descricao: props.descricao
     }
     let listaTemporaria = listaLogada;
-    if(listaLogada !== ""){
-        listaTemporaria.produtos.push(produto)
-    }else{ alert('Por favor crie e selecione uma Lista.')}
+    
+    if (listaTemporaria) {
+      listaTemporaria.produtos.push(produto)
+      alert('Produto salvo na lista com sucesso!!!')
+    } else { alert('Por favor crie e selecione uma Lista.') }
     atualizarLista(listaTemporaria)
     setListaLogada(listaTemporaria)
-    alert('Produto salvo na lista com sucesso!!!')
+
   }
 
   const atualizarLista = (novaLista) => {
-    const listasAtualizadas = listas.map( lista => {
-        if(lista.id === novaLista.id)
-            lista.produtos = novaLista.produtos
-        return lista      
+    const listasAtualizadas = listas.map(lista => {
+      if (lista.id === novaLista.id)
+        lista.produtos = novaLista.produtos
+      return lista
     })
     setListas(listasAtualizadas)
   }
@@ -114,24 +116,24 @@ function App() {
     }))
   }
 
-  function salvarStatusLista (element) {
-    
+  function salvarStatusLista(element) {
+
     setListaLogada(element)
   }
 
-  function deletarLista (element) {
+  function deletarLista(element) {
     let listasTemporarias = listas;
     let y = listasTemporarias.findIndex(valor => valor.id === element.id)
-    listasTemporarias.splice(y,1)
+    listasTemporarias.splice(y, 1)
     setListas([...listasTemporarias])
-    if(listaLogada.id === element.id)
+    if (listaLogada.id === element.id)
       setListaLogada('')
   }
 
   return (
     <div className="App">
       <Rotas
-        listaLogada ={listaLogada}
+        listaLogada={listaLogada}
         tipos={tipos}
         aoDeletar={deletarProduto}
         mudarCor={mudarCorTipo}
@@ -139,10 +141,11 @@ function App() {
         recebeProduto={produto => salvarProdutos(produto)}
         recebeLista={lista => salvarLista(lista)}
         listaProduto={listas}
-        salvarProdutoNaLista = {produto => salvarProdutoNaLista(produto)}
-        salvarStatus = {elem => salvarStatusLista(elem) }
-        deletarLista = {elem => deletarLista(elem)}
+        salvarProdutoNaLista={produto => salvarProdutoNaLista(produto)}
+        salvarStatus={elem => salvarStatusLista(elem)}
+        deletarLista={elem => deletarLista(elem)}
       />
+      
       <Rodape />
     </div>
 
