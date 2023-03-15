@@ -1,12 +1,18 @@
-# Getting Started with Create React App
+# Projeto Info Periféricos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O projeto tem como objetivo criar cards de periféricos e cadastrá-los em listas, as listas podem ser criadas contendo um valor estimado para elas, tanto os cards e
+as listas podem ser deletadas ou modificadas.
 
-## Available Scripts
+## Objetivo do projeto
+- atualmente estou me desenvolvendo em front-end com JS, React e Sass.
 
-In the project directory, you can run:
+O objetivo do projeto foi a utilização do React.js para criar uma interface ágil que funcione de forma rápida e satisfatoria ao carregar seus contéudos, utiilizando o
+react-router foi póssivel criar uma interface que navegue entre a criação e a visualizazção dos cards e listas de forma fluida sem a necessidade de recarregamento da página, a estilização e manutenção estão mais simples com a modularização do css utilizando o sass.
+ 
+### Telas
 
-### `npm start`
+
+
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
