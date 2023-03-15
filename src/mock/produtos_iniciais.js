@@ -10,7 +10,7 @@ export function getProdutos () {
                 nome:'Teclado Branco',
                 fabricante:'T-data',
                 preco: 29090,
-                imagem: './img/perifericos/teclado Branco.jpg',
+                imagem: './img/perifericos/teclado branco.jpg',
                 descricao: 'Ótimo teclado para uso profissional e domestico',
                 tipo: 'teclados'
                 },
