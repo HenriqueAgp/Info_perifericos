@@ -47,6 +47,7 @@ const Formulario = (props) => {
     }
 
     const enviaLista = (evt) => {
+        
         evt.preventDefault();
         let lista = {
             id: uuidv4(),

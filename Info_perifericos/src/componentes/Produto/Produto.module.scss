@@ -1,0 +1,72 @@
+.produto {
+    width: 280px;
+    position: relative;
+
+    &__cabecalho {
+        background-color: #F0F0F0;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        border-radius: 15%;
+        position: relative;
+        bottom: -50px;
+    }
+
+    &__rodape {
+        background: #FFFFFF;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+        border-radius: 0px 0px 10px 10px;
+        padding-top: 35px;
+        padding-bottom: 20px;
+        
+        h4 {
+            color: #6278F7;
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        h5 {
+            font-size: 18px;
+            line-height: 22px;
+            color: #212121;
+            padding: 0 16px;
+            margin: 8px 16px;
+        }
+
+        p {
+            word-break: break-all;
+            font-size: small;
+            margin: 16px 8px;
+        }
+    }
+
+    &__deletar {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+    }
+
+    button {
+        background-color: #d52121;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 9px;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        &:hover {
+            background-color: #da4a4a;
+            color: #95ffd4;
+            font-size: 18px;
+            box-shadow: 1px 1px 2px black;
+        }
+    }
+
+}

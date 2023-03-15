@@ -1,8 +1,8 @@
-import './Botao.css'
+import styles from './Botao.module.scss'
 
 const Botao = (props) =>{
     return (
-        <button type='submit' className='botao'>
+        <button type='submit' className={styles.botao}>
             {props.children}
         </button>
             

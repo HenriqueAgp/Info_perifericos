@@ -4,7 +4,7 @@ import Rodape from './componentes/Rodape/Index.js';
 import { getProdutos } from './mock/produtos_iniciais.js';
 import { v4 as uuidv4 } from 'uuid';
 import Rotas from './Rotas/Index.js';
-
+import "./styles/globalStyles.scss"
 
 
 function App() {
@@ -54,13 +54,19 @@ function App() {
   }, [])
 
   const salvarProdutos = (produto) => {
+    if(produto.preco === "")
+      produto.preco = 0;
+    
     setProdutos([...produtos, produto]) // Foi criado um novo array e inserido o array antigo e depois o novo elemento do array que no caso seria o objeto colaborador.
   }
 
   const salvarLista = (novaLista) => {
+    const validate =  novaLista.valorEstimado
+    if(validate === ""){
+      novaLista.valorEstimado = 0;
+    }
     const listaFinal = [...listas, novaLista]
     setListas(listaFinal)
-
   }
 
   function deletarProduto(id, validador) {
@@ -146,7 +152,7 @@ function App() {
         deletarLista={elem => deletarLista(elem)}
       />
       
-      <Rodape />
+     <Rodape />
     </div>
 
   );
