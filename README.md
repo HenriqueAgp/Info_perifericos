@@ -12,7 +12,7 @@ react-router foi possível criar uma interface que navegue entre a criação e a
 
 - Atualmente estou me desenvolvendo em front-end com JS, React e Sass, estudando a parte pratica no site da ALURA. 
 - Estudando a parte de arquitetura, requisitos, estatísticas descritivas e qualidade de processos pela PUC MINAS.  
-- 
+
 ## Telas 
 
 <div> 
